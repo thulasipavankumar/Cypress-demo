@@ -1,0 +1,47 @@
+name: Cypress Tests
+on:
+  # cronjob to run every 3 hours
+  schedule:
+    - cron: "0 */6 * * *"
+  
+  push:
+    branches: [  ]
+  pull_request:
+    branches: [ main ]
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+jobs:
+  test:
+    timeout-minutes: 60
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - name: Cypress run
+        uses: cypress-io/github-action@v6
+    - uses: actions/upload-artifact@v3
+      if: always()
+      with:
+        name: html-report
+        path: reports/
+        retention-days: 30
+    # Configure Pages
+    - name: Configure GitHub Pages
+      uses: actions/configure-pages@v3
+  # Upload the report as a pages artifact
+    - name: Upload Pages Artifact
+      uses: actions/upload-pages-artifact@v3
+      with:
+        path: reports/html
+  deploy:
+    needs: test
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+    - name: Deploy to GitHub Pages
+      id: deployment
+      uses: actions/deploy-pages@v4
