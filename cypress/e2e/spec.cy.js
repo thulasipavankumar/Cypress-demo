@@ -23,9 +23,9 @@
       cy.url().should('include', 'careers');
     });
   
-    it('should search for "technology" in the search bar', () => {
-      
-      cy.get(':nth-child(9) > .nav-item').click();
+    it('should search for "automation" in the search bar', () => {
+
+      cy.contains('Search').click()
       cy.get('#gsc-i-id1').type('automation');
       cy.get('#gsc-i-id1').should('have.value', 'automation');
       // Press Enter key to perform the search
