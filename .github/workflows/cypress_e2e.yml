@@ -17,10 +17,16 @@ jobs:
   test:
     timeout-minutes: 60
     runs-on: ubuntu-latest
+    container:
+      image: cypress/browsers:latest
+      options: --user 1001
     steps:
     - uses: actions/checkout@v3
     - name: Cypress run
       uses: cypress-io/github-action@v6
+      with:
+        browser: chrome
+        start: npm test
     - uses: actions/upload-artifact@v3
       if: always()
       with:
