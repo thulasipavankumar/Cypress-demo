@@ -1,0 +1,28 @@
+{
+  "name": "cypress-demo",
+  "version": "1.0.0",
+  "description": "Cypress demo",
+  "main": "index.js",
+  "scripts": {
+    "test": "cypress run --headed  --browser firefox"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/thulasipavankumar/Cypress-demo.git"
+  },
+  "keywords": [
+    "cypress;automation;"
+  ],
+  "author": "Pavan Kumar Tulasi",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/thulasipavankumar/Cypress-demo/issues"
+  },
+  "homepage": "https://github.com/thulasipavankumar/Cypress-demo#readme",
+  "dependencies": {
+    "cypress": "^13.6.6"
+  },
+  "devDependencies": {
+    "cypress-mochawesome-reporter": "^3.8.2"
+  }
+}
