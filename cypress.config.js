@@ -3,13 +3,16 @@ const { defineConfig } = require("cypress");
 module.exports = defineConfig({
   e2e: {
     experimentalStudio:true,
-    reporter: 'junit',
+    reporter: 'cypress-mochawesome-reporter',
+    video: false,
     reporterOptions: {
-      mochaFile: 'reports/my-test-output.xml',
-      toConsole: true,
+      charts: true,
+      reportPageTitle: 'Cypress Inline Reporter',
+      embeddedScreenshots: true, 
+      inlineAssets: true, //Adds the asserts inline
     },
     setupNodeEvents(on, config) {
-     
+      require('cypress-mochawesome-reporter/plugin')(on);
     },
   },
 });
