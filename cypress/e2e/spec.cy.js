@@ -5,7 +5,6 @@
           return false
      });
     beforeEach(() => {
-        cy.viewport(1680, 1050)
         cy.visit('https://www.cognizant.com/')
         cy.get('button[id="onetrust-accept-btn-handler"]').click() 
     })
