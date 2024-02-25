@@ -26,4 +26,4 @@ The latest e2e run details of this project can be viewed [here](https://thulasip
 
 
 # Contributions
--  `To raise a issue you can click` [here](https://github.com/thulasipavankumar/tobania-testing/issues/new)
+-  `To raise a issue you can click` [here](https://github.com/thulasipavankumar/Cypress-demo/issues/new)
