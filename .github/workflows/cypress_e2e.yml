@@ -31,6 +31,7 @@ jobs:
         browser: chrome
         start: npm test 
     - name: Generate allure report
+      if: always()
       run: |
             npm ci
             npm run report:allure
@@ -56,9 +57,11 @@ jobs:
     # Configure Pages
     - name: Configure GitHub Pages
       uses: actions/configure-pages@v3
+      if: always()
   # Upload the report as a pages artifact
     - name: Upload Pages Artifact
       uses: actions/upload-pages-artifact@v3
+      if: always()
       with:
         path: public/
   deploy:
