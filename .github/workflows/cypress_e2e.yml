@@ -26,14 +26,18 @@ jobs:
       uses: cypress-io/github-action@v6
       with:
         browser: chrome
-        start: npm test && npm run report:allure
+        start: npm test 
+    - name: Generate allure report
+      run: |
+            npm ci
+            npm run report:allure
     - uses: actions/upload-artifact@v3
       if: always()
       with:
         name: failed-screenshots
         path: cypress/screenshots
         retention-days: 30
-    - name: Copy test execution videos, screenshots and reports
+    - name: Copy reports
       run: |
           mkdir public
           cp -a allure-report/. public
